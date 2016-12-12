@@ -7,6 +7,36 @@
  * @package lab01
  */
 
+ if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page(array(
+		'page_title' 	=> 'Opzioni Tema',
+		'menu_title'	=> 'Opzioni Tema',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> true
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Laboratorio',
+		'menu_title'	=> 'Laboratorio',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Immagine fissa',
+		'menu_title'	=> 'Immagine fissa',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Slide',
+		'menu_title'	=> 'Slide',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+}
+
 if ( ! function_exists( 'lab01_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
