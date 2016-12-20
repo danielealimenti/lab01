@@ -71,7 +71,6 @@ get_header(); ?>
                                 ?>
                             </li>
                             <?php
-                                //$ruolo = get_field('ruolo', "user_$user_id");
 
                                 foreach ($ruolo['value'] as $value) {
                                     if(preg_match("/\bdesigner\b/i",$value)) { $tools = get_field_object('tools', "user_$user_id"); ?>
