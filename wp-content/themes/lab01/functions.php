@@ -76,6 +76,8 @@ function lab01_setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
+     //aggiunte dimensioni delle immagini skills
+    add_image_size('skill_image_size', 105,120,true );
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -138,15 +140,29 @@ add_action( 'widgets_init', 'lab01_widgets_init' );
  * Enqueue scripts and styles.
  */
 function lab01_scripts() {
-	wp_enqueue_style( 'lab01-style', get_stylesheet_uri() );
+    //aggiunti stili del sito
+    wp_enqueue_style('Style', get_template_directory_uri() . '/assets/css/styles.css');
+    // wp_enqueue_style('OnePageStyle', get_template_directory_uri() . '/assets/css/onepage-scroll.css');
+    //scripts
+    wp_enqueue_script('jquery');
+	wp_enqueue_script('core', get_template_directory_uri() . '/assets/js/core.js');
+	wp_enqueue_script('cycle2', get_template_directory_uri() . '/assets/js/cycle2.js');
 
-	wp_enqueue_script( 'lab01-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'lab01-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+    //jurgen - questo step richiama l'uso di onepagescroll applicato al nostro html, TO CHECK
+	// wp_enqueue_script('PageScrollApply', get_template_directory_uri() . '/assets/js/PageScroll.js');
+    // wp_enqueue_script('onePageScroll', get_template_directory_uri() . '/assets/js/onepagescroll.js');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+
+	// wp_enqueue_style( 'lab01-style', get_stylesheet_uri() );
+    //
+	// wp_enqueue_script( 'lab01-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    //
+	// wp_enqueue_script( 'lab01-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+    //
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 }
 add_action( 'wp_enqueue_scripts', 'lab01_scripts' );
 

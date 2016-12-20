@@ -11,16 +11,12 @@
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lab01' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'lab01' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'lab01' ), 'lab01', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<!-- <footer>
+	<div class="foot">
+		<p id="lab">lab01 by <a href="<?php get_home_url();?>">med innovations</p>
+		<p id="med">Med Computer s.r.l., via CLuentina, 35/B 62100 Macerata (Loc. Piediripa) Italia</p>
+	</div>
+</footer> -->
 
 <?php wp_footer(); ?>
 
