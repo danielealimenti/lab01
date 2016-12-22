@@ -12,12 +12,13 @@
         </div>
     </div>
 
-<!-- Second Section -->
+<!-- Second Section OK -->
 <div class="wrapper_page">
     <h2 class="title">
         cosa facciamo
     </h2>
     <div class="wrap_box">
+
         <?php
         $termini = get_terms(array(
             'taxonomy' => 'tipologia',
@@ -27,14 +28,12 @@
         foreach ($termini as $termine) {
             ?>
             <div class="container--tag">
-                <!-- <img src=
-                /> -->
-                <?php
-                    $fields = get_field('skill_image');
-                    echo $fields;
-                ?>
                 <div class="wrap_text--tag">
-
+                    <img src="
+                    <?php
+                        $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
+                        echo $img["url"];
+                    ?>" alt="">
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; ?></p>
                 </div>
@@ -45,56 +44,6 @@
         //Restore original Post Data
         wp_reset_postdata();
         ?>
-        <!-- <div class="container--tag">
-            <img src="./ritagli/ico_webdevelopment.png" />
-            <div class="wrap_text--tag">
-                <h4>web development</h4>
-                <p>
-                    Codici HTML5, CSS 3, XXXXXX, Codici HTML5, CSS3, XXXXXX
-                </p>
-            </div>
-            <a href="#" class="btn_more">scopri di più ></a>
-        </div>
-        <div class="container--tag">
-            <img src="./ritagli/ico_webdevelopment.png" />
-            <div class="wrap_text--tag">
-                <h4>web development</h4>
-                <p>
-                    Codici HTML5, CSS 3, XXXXXX, Codici HTML5, CSS3, XXXXXX
-                </p>
-            </div>
-            <a href="#" class="btn_more">scopri di più ></a>
-        </div>
-        <div class="container--tag">
-            <img src="./ritagli/ico_webdevelopment.png" />
-            <div class="wrap_text--tag">
-                <h4>web development</h4>
-                <p>
-                    Codici HTML5, CSS 3, XXXXXX, Codici HTML5, CSS3, XXXXXX
-                </p>
-            </div>
-            <a href="#" class="btn_more">scopri di più ></a>
-        </div>
-        <div class="container--tag">
-            <img src="./ritagli/ico_webdevelopment.png" />
-            <div class="wrap_text--tag">
-                <h4>web development</h4>
-                <p>
-                    Codici HTML5, CSS 3, XXXXXX, Codici HTML5, CSS3, XXXXXX
-                </p>
-            </div>
-            <a href="#" class="btn_more">scopri di più ></a>
-        </div>
-        <div class="container--tag">
-            <img src="./ritagli/ico_webdevelopment.png" />
-            <div class="wrap_text--tag">
-                <h4>web development</h4>
-                <p>
-                    Codici HTML5, CSS 3, XXXXXX, Codici HTML5, CSS3, XXXXXX
-                </p>
-            </div>
-            <a href="#" class="btn_more">scopri di più ></a>
-        </div> -->
     </div>
     <div class="btn_all">
         <a href="#" class="btn">About us</a>
@@ -105,26 +54,33 @@
 <div class="wrapper_page">
     <h2 class="title">diario</h2>
         <div class="wrap_box">
-        <div class="box box--activity first">
-            <p class="titolo">Titolo attività</p>
-            <img src="ritagli/activity_02.jpg" alt="">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a href="#" class="btn--more btn_more--black">leggi di più ></a>
-        </div>
-        <div class="box box--activity">
-            <p class="titolo">Titolo attività</p>
-            <img src="ritagli/activity_02.jpg" alt="">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a href="#" class="btn--more btn_more--black">leggi di più ></a>
-        </div>
+            <div class="box box--activity">
+            <?php
+                // WP_Query arguments
+                $args = array(
+                       'post_type'  => array( 'attivita' ),
+                );
 
-        <div class="box box--activity last">
-            <p class="titolo">Titolo attività</p>
-            <img src="ritagli/activity_02.jpg" alt="">
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a href="#" class="btn--more btn_more--black">leggi di più ></a>
-        </div>
-    </div><!-- END Riquadri -->
+                // The Query
+                $query = new WP_Query( $args );
+
+                // The Loop
+                if ( $query->have_posts() ) {
+                	while ( $query->have_posts() ) {
+                		$query->the_post();
+                        ?>
+                        <p><?php the_title(); ?></p>
+                        <?php the_post_thumbnail(); ?>
+                        <p><?php  the_content();?></p>
+                        <a href="#" class="btn--more btn_more--black">leggi di più</a>
+                        <?php
+                	}
+                }
+                // Restore original Post Data
+                wp_reset_postdata();
+            ?>
+            </div>
+        </div><!-- END Riquadri -->
     <div class="btn_all">
         <a href="#" class="btn">visualizza tutto</a>
     </div>
@@ -136,7 +92,39 @@
         Chi siamo
     </h2>
     <div class="wrap_box">
-        <div class="box box--users first">
+
+        <?php
+
+        $utenti = get_users();
+        $counter = 0;
+        foreach ($utenti as $singoloUtente) {?>
+            <?php  if($counter != 3){
+            ?>
+            <div class="box box--users">
+                <div class="bio">
+                    <p class="nome"><?php echo $singoloUtente->first_name; ?></p>
+                    <p class="cognome"><?php echo $singoloUtente->last_name; ?></p>
+                    <p class="cosa"> <?php
+                    $ruolo = get_field_object('ruolo', "user_".$singoloUtente->ID);
+                    echo implode(", ",$ruolo['value']); ?></p>
+                    <p class="tag"><?php
+                    $tags = get_field_object('tag', "user_".$singoloUtente->ID);
+                    echo $tags['value'];
+                    ?></p>
+                    <a href="#"> scopri ></a>
+                </div>
+                <img src="" alt="">
+            </div>
+            <?php
+                $counter++;
+            }
+        }
+        // echo get_user_meta($utenti[0]->id);
+        // print_r($utenti[0]);
+
+         ?>
+        </div>
+        <!-- <div class="box box--users first">
             <div class="bio">
                 <p class="nome">Brunella</p>
                 <p class="cognome">Ricci</p>
@@ -165,7 +153,7 @@
                 <a href="#">scopri ></a>
             </div>
             <img src="./ritagli/team_member01.jpg" alt="">
-        </div>
+        </div> -->
     </div><!--END Wrap Box -->
     <div class="btn_all">
         <a href="#" class="btn">visualizza team</a>
