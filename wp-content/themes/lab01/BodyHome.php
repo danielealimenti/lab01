@@ -141,7 +141,7 @@
                     </p>
                     <a href="<?php echo get_edit_user_link($singoloUtente->ID); ?>"> scopri ></a>
                 </div>
-                <img src=<?php echo get_avatar_url($singoloUtente->ID); ?> alt="">
+                <img src="<?php the_field('immagine_profilo', "user_$singoloUtente->ID"); ?>" alt="">
             </div>
         <?php
         }
