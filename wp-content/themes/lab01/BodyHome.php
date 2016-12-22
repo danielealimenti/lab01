@@ -96,69 +96,51 @@
         <?php
 
         $utenti = get_users();
-        $counter = 0;
-        foreach ($utenti as $singoloUtente) {?>
-            <?php  if($counter != 3){
+        $array = array();
+
+        for ($i=0; $i < 3; $i++) {
+
+            $randval = mt_rand(0, count($utenti)-1);
+
+            // while per controllo presenza utente
+            while(in_array($randval,$array)){
+                $randval = mt_rand(0, count($utenti)-1);
+            }
+
+            array_push($array, $randval);
+
+            $singoloUtente = $utenti[$randval];
             ?>
             <div class="box box--users">
                 <div class="bio">
                     <p class="nome"><?php echo $singoloUtente->first_name; ?></p>
                     <p class="cognome"><?php echo $singoloUtente->last_name; ?></p>
-                    <p class="cosa"> <?php
-                    $ruolo = get_field_object('ruolo', "user_".$singoloUtente->ID);
-                    echo implode(", ",$ruolo['value']); ?></p>
-                    <p class="tag"><?php
-                    $tags = get_field_object('tag', "user_".$singoloUtente->ID);
-                    echo $tags['value'];
-                    ?></p>
+                    <p class="cosa">
+                    <?php
+                        $ruolo = get_field_object('ruolo', "user_".$singoloUtente->ID);
+                        echo implode(", ",$ruolo['value']); ?>
+                    </p>
+                    <p class="tag">
+                    <?php
+                        $tags = get_field_object('tag', "user_".$singoloUtente->ID);
+                        echo $tags['value'];
+                    ?>
+                    </p>
                     <a href="#"> scopri ></a>
                 </div>
                 <img src="" alt="">
             </div>
-            <?php
-                $counter++;
-            }
+        <?php
         }
-        // echo get_user_meta($utenti[0]->id);
-        // print_r($utenti[0]);
-
-         ?>
+        ?>
         </div>
-        <!-- <div class="box box--users first">
-            <div class="bio">
-                <p class="nome">Brunella</p>
-                <p class="cognome">Ricci</p>
-                <p class="cosa"> web designer</p>
-                <p class="tag">#tag #tag #tag #tag #tag</p>
-                <a href="#">scopri ></a>
-            </div>
-            <img src="./ritagli/team_member01.jpg" alt="">
-        </div>
-        <div class="box box--users">
-            <div class="bio">
-                <p class="nome">Brunella</p>
-                <p class="cognome">Ricci</p>
-                <p class="cosa"> web designer</p>
-                <p class="tag">#tag #tag #tag #tag #tag</p>
-                <a href="#">scopri ></a>
-            </div>
-            <img src="./ritagli/team_member01.jpg" alt="">
-        </div>
-        <div class="box box--users last">
-            <div class="bio">
-                <p class="nome">Brunella</p>
-                <p class="cognome">Ricci</p>
-                <p class="cosa"> web designer</p>
-                <p class="tag">#tag #tag #tag #tag #tag</p>
-                <a href="#">scopri ></a>
-            </div>
-            <img src="./ritagli/team_member01.jpg" alt="">
-        </div> -->
-    </div><!--END Wrap Box -->
+    </div>
+    <!--END Wrap Box -->
     <div class="btn_all">
         <a href="#" class="btn">visualizza team</a>
     </div>
-</div><!-- END Fourth Section -->
+</div>
+<!-- END Fourth Section -->
 
 <footer>
     <p class="float--sx">lab01 by <a href="#" class="link_med">med innovations</p>
