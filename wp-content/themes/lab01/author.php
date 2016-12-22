@@ -23,6 +23,9 @@ get_header(); ?>
                      * properly with a call to rewind_posts().
                      */
                     the_post();
+
+
+
                 ?>
 
                 <header class="page-header">
@@ -50,24 +53,71 @@ get_header(); ?>
                     <div id="author-avatar">
                         <?php echo get_avatar( get_the_author_meta( 'user_email' ) ); ?>
                     </div><!-- #author-avatar -->
-                    <div id="author-description">
-                        <h2><?php printf( __( 'About %s', 'twentyeleven' ), get_the_author() ); ?></h2>
 
-                        <ul>
-                            <li>Cognome: <?php the_author_meta( 'last_name' ); ?></li>
-                            <li>Nome: <?php the_author_meta( 'first_name' ); ?></li>
-                            <li>Bio: <?php the_author_meta( 'description' ); ?></li>
-                            <li>E-mail: <?php the_author_meta( 'user_email' ); ?></li>
+                    <div class="immagineCopertina" style="background: url('<?php the_field('immagine-copertina', "user_$user_id") ?> no-repeat top center') ">
+                        <div class="immagineProfilo">
+
+                            <img width="145" height="145" src="<?php the_field('immagine_profilo', "user_$user_id");?>" alt="profilo">
+                            <h1><?php the_author_meta( 'first_name' ); ?> <?php the_author_meta( 'last_name' ); ?></h1>
+                            <h2><?php $ruolo = get_field_object('ruolo', "user_$user_id"); echo implode(", ",$ruolo['value']); ?></h2>
+                        </div>
+
+
+                    </div>
+
+
+                    <div id="author-description">
+
+                        <?php
+                            echo '<br/>';
+                        /*
+                            echo '<ul>'
+                                $fields = get_fields("user_{$user_id}");
+                                //echo "GET FIELDS";
+
+                                if( $fields )
+                                {
+                                    //echo "ENTRATO SU IF";
+                                    foreach( $fields as $field_name => $value)
+                                    {
+                                        // get_field_object( $field_name, $post_id, $options )
+                                        // - $value has already been loaded for us, no point to load it again in the get_field_object function
+                                        $field = get_field_object($field_name, "user_$user_id");
+
+                                        echo '<li>';
+
+                                        //echo 'LABEL: ' . $field['label'] . ' VALORE: ' . $field['value'];
+                                        //echo json_encode($field);
+
+                                        if(is_array($field['value'])){
+                                            echo $field['label']. ': ' . implode(", ",$field['value']);
+                                        }
+
+                                        else{
+                                            echo $field['label']. ': ' . $field['value'];
+                                        }
+
+                                        echo '</li>';
+                                    }
+                                }
+
+                                echo '</ul>'
+                                */?>
+
+                            <li><span class="label">Cognome:</span> <?php the_author_meta( 'last_name' ); ?></li>
+                            <li><span class="label">Nome:</span> <?php the_author_meta( 'first_name' ); ?></li>
+                            <li><span class="label">Bio:</span> <?php the_author_meta( 'description' ); ?></li>
+                            <li><span class="label">E-mail:</span> <?php the_author_meta( 'user_email' ); ?></li>
                             <li>
                                 <?php
                                     $ruolo = get_field_object('ruolo', "user_$user_id");
-                                    echo $ruolo['label']. ': ' . implode(", ",$ruolo['value']);
+                                    echo '<span class="label">' .$ruolo['label']. ':</span> ' . implode(", ",$ruolo['value']);
                                 ?>
                             </li>
                             <li>
                                 <?php
                                     $competenze = get_field_object('competenze', "user_$user_id");
-                                    echo $competenze['label']. ': ' . implode(", ",$competenze['value']);
+                                    echo '<span class="label">' .$competenze['label']. ':</span> ' . implode(", ",$competenze['value']);
                                 ?>
                             </li>
                             <?php
@@ -75,13 +125,13 @@ get_header(); ?>
                                 foreach ($ruolo['value'] as $value) {
                                     if(preg_match("/\bdesigner\b/i",$value)) { $tools = get_field_object('tools', "user_$user_id"); ?>
                                         <li>
-                                            <?php echo $tools['label']. ': ' . implode(", ",$tools['value']); ?>
+                                            <?php echo '<span class="label">' .$tools['label']. ':</span> ' . implode(", ",$tools['value']); ?>
                                         </li>
                                 <?php
                                     }
                                     elseif(preg_match("/\bprogrammatore\b/i",$value)) { $linguaggi_framework = get_field_object('linguaggi-framework', "user_$user_id");?>
                                         <li>
-                                            <?php echo $linguaggi_framework['label']. ': ' . implode(", ", $linguaggi_framework['value']); ?>
+                                            <?php echo '<span class="label">' .$linguaggi_framework['label']. ':</span> ' . implode(", ", $linguaggi_framework['value']); ?>
                                         </li>
                                 <?php
                                     }
