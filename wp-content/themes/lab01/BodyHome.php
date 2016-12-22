@@ -35,7 +35,7 @@
                         echo $img["url"];
                     ?>" alt="">
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
-                    <p><?php echo $termine->description; ?></p>
+                    <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
             </div>
         <?php
@@ -46,6 +46,7 @@
         ?>
     </div>
     <div class="btn_all">
+        <!-- manca il link alla pagina degli user -->
         <a href="#" class="btn">About us</a>
     </div>
 </div><!-- END Second Section -->
@@ -69,10 +70,20 @@
                 	while ( $query->have_posts() ) {
                 		$query->the_post();
                         ?>
-                        <p><?php the_title(); ?></p>
+                        <p class="titolo"><?php the_title(); ?></p>
                         <?php the_post_thumbnail(); ?>
-                        <p><?php  the_content();?></p>
-                        <a href="#" class="btn--more btn_more--black">leggi di più</a>
+                        <?php
+                            //mi ritorno il contenuto dell'attivita
+                            $phrase = get_the_content();
+                            // This is where wordpress filters the content text and adds paragraphs
+                            $phrase = apply_filters('the_content', $phrase);
+                            //mi preparo la prima parte della p html
+                            $replace = '<p class="text">';
+                            //stampo la stringa sostituita
+                            echo str_replace('<p>', $replace, $phrase);
+                        ?>
+
+                        <a href="<?php echo get_permalink(); ?>" class="btn--more btn_more--black">leggi di più</a>
                         <?php
                 	}
                 }
@@ -82,6 +93,7 @@
             </div>
         </div><!-- END Riquadri -->
     <div class="btn_all">
+        <!-- manca link alla pagina delle attivita -->
         <a href="#" class="btn">visualizza tutto</a>
     </div>
 </div><!-- END Third Section -->
@@ -96,6 +108,7 @@
         <?php
 
         $utenti = get_users();
+
         $array = array();
 
         for ($i=0; $i < 3; $i++) {
@@ -126,9 +139,9 @@
                         echo $tags['value'];
                     ?>
                     </p>
-                    <a href="#"> scopri ></a>
+                    <a href="<?php echo get_edit_user_link($singoloUtente->ID); ?>"> scopri ></a>
                 </div>
-                <img src="" alt="">
+                <img src=<?php echo get_avatar_url($singoloUtente->ID); ?> alt="">
             </div>
         <?php
         }
@@ -137,12 +150,13 @@
     </div>
     <!--END Wrap Box -->
     <div class="btn_all">
+        <!-- manca da aggiungere il link -->
         <a href="#" class="btn">visualizza team</a>
     </div>
 </div>
 <!-- END Fourth Section -->
 
 <footer>
-    <p class="float--sx">lab01 by <a href="#" class="link_med">med innovations</p>
+    <p class="float--sx">lab01 by <a href="<?php site_url(); ?>" class="link_med">med innovations</p>
     <p class="float--dx">Med Computer s.r.l., via CLuentina, 35/B 62100 Macerata (Loc. Piediripa) Italia</p>
 </footer>
