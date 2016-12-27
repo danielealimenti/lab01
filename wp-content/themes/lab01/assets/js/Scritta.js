@@ -8,7 +8,7 @@ jQuery( document ).ready(function( $ ) {
     var message = container.innerHTML;
     things.push(message);
     var mode = 'write';
-    var delay = 500;
+    var delay = 75;
 
     function updateText(txt) {
         container.innerHTML = txt;
@@ -29,9 +29,10 @@ jQuery( document ).ready(function( $ ) {
                 thing = thing.substr(1);
 
                 updateText(message);
-
+                delay = 75;
                 if(thing.length == 0){
                     mode = 'delete';
+                    delay=1500;
                 }
 
             break;
@@ -40,6 +41,7 @@ jQuery( document ).ready(function( $ ) {
                 message = message.slice(0, -1);
                 updateText(message);
 
+                delay = 75;
                 if(message.length == 0)
                 {
                     mode = 'write';
