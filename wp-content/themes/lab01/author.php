@@ -87,7 +87,9 @@ if ( get_the_author_meta( 'description' ) ) :
               </ul>
 
 
-              <?php foreach ($ruolo['value'] as $value) {
+              <?php
+                // mostra determinate informazioni a seconda se sono un designer e/o un programmatore
+                foreach ($ruolo['value'] as $value) {
                    if(preg_match("/\bdesigner\b/i",$value)) { $tools = get_field_object($field_tools, "user_$user_id"); ?>
                    <span><?php $tools['label']; ?></span>
                    <ul>
