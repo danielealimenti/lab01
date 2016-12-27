@@ -150,6 +150,7 @@ function lab01_scripts() {
     wp_enqueue_script('jquery');
 	wp_enqueue_script('core', get_template_directory_uri() . '/assets/js/core.js');
 	wp_enqueue_script('cycle2', get_template_directory_uri() . '/assets/js/cycle2.js');
+	wp_enqueue_script('ScrittaDinamica', get_template_directory_uri() . '/assets/js/Scritta.js');
 
 
     //jurgen - questo step richiama l'uso di onepagescroll applicato al nostro html, TO CHECK
