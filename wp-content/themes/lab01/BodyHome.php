@@ -123,22 +123,12 @@
 
             $singoloUtente = $utenti[$randval];
             ?>
-            <!-- <pre> -->
-            <?php
-            // print_r(the_field('immagine_profilo', 'user_'.$singoloUtente->ID));
-
-            // $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
-            // print_r($profilo);
-            // echo $profilo['value']['sizes']['profilo-home'];
-            ?>
-            <!-- </pre> -->
 
             <div class="box box--users">
                 <img src="
                 <?php
                 $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
                 echo $profilo['value']['sizes']['profilo-home'];
-                // print_r(the_field('immagine_profilo', 'user_$singoloUtente->ID'));
                 ?>
                 " alt="">
                 <div class="bio">
