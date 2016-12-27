@@ -1,6 +1,5 @@
 jQuery.noConflict();
 jQuery( document ).ready(function( $ ) {
-
     var container = document.getElementById('changeText');
 
     var things = [' Web Developers','Web Designers', "diamoci un < div >"];
@@ -9,7 +8,7 @@ jQuery( document ).ready(function( $ ) {
     var message = container.innerHTML;
     things.push(message);
     var mode = 'write';
-    var delay = 2000;
+    var delay = 500;
 
     function updateText(txt) {
         container.innerHTML = txt;
@@ -23,45 +22,33 @@ jQuery( document ).ready(function( $ ) {
             message = '';
             mode = 'write';
         }
-        
+
         switch(mode) {
             case 'write' :
-            message += thing.slice(0, 1);
-            thing = thing.substr(1);
+                message += thing.slice(0, 1);
+                thing = thing.substr(1);
 
-            updateText(message);
+                updateText(message);
 
-            if(thing.length == 0){
-                mode = 'delete';
-                delay = 1500;
-            } else {
-                delay = 32 + Math.round(Math.random() * 40);
-            }
+                if(thing.length == 0){
+                    mode = 'delete';
+                }
 
             break;
 
             case 'delete' :
-            message = message.slice(0, -1);
-            updateText(message);
+                message = message.slice(0, -1);
+                updateText(message);
 
-            if(message.length == 0)
-            {
-                mode = 'write';
-                delay = 1500;
-            } else {
-                delay = 32 + Math.round(Math.random() * 100);
-            }
+                if(message.length == 0)
+                {
+                    mode = 'write';
+                }
             break;
         }
-
-
 
         timeout = window.setTimeout(tick, delay);
     }
 
     var timeout = window.setTimeout(tick, delay);
-
-    /*span = document.getElementById("fixtext");
-    txt = document.createTextNode("diamoci un < div >");
-    span.innerText = txt.textContent; */
 });

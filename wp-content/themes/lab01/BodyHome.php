@@ -35,7 +35,7 @@
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
-                <a href="#" class="btn_more">scopri di più ></a>
+                <a href="<?php echo get_term_link($termine, "tipologia"); ?>" class="btn_more">scopri di più ></a>
             </div>
         <?php
         }
@@ -46,7 +46,7 @@
     </div>
     <div class="btn_all">
         <!-- manca il link alla pagina degli user -->
-        <a href="#" class="btn">About us</a>
+        <!-- <a href="#" class="btn">About us</a> -->
     </div>
 </div><!-- END Second Section -->
 
@@ -60,13 +60,16 @@
                        'post_type'  => array( 'attivita' ),
                 );
 
+                $index = 0; //indice che conta fino a 3 per uscire dal ciclo while
+
                 // The Query
                 $query = new WP_Query( $args );
 
                 // The Loop
                 if ( $query->have_posts() ) {
-                	while ( $query->have_posts() ) {
+                	while ( $query->have_posts() && $index < 3) {
                 		$query->the_post();
+                        $index ++;
                         ?>
                         <div class="box box--activity">
                         <p class="titolo"><?php the_title(); ?></p>
@@ -123,22 +126,12 @@
 
             $singoloUtente = $utenti[$randval];
             ?>
-            <!-- <pre> -->
-            <?php
-            // print_r(the_field('immagine_profilo', 'user_'.$singoloUtente->ID));
-
-            // $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
-            // print_r($profilo);
-            // echo $profilo['value']['sizes']['profilo-home'];
-            ?>
-            <!-- </pre> -->
 
             <div class="box box--users">
                 <img src="
                 <?php
                 $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
                 echo $profilo['value']['sizes']['profilo-home'];
-                // print_r(the_field('immagine_profilo', 'user_$singoloUtente->ID'));
                 ?>
                 " alt="">
                 <div class="bio">
@@ -155,7 +148,7 @@
                         echo $tags['value'];
                     ?>
                     </p>
-                    <a href="<?php echo get_edit_user_link($singoloUtente->ID); ?>"> scopri ></a>
+                    <a href="<?php echo get_author_posts_url($singoloUtente->ID); ?>"> scopri ></a>
                 </div>
 
             </div>

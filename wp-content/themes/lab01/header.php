@@ -21,7 +21,9 @@
 
 <body <?php body_class(); ?>>
 <div class="top_menu">
-	<div class="logo"></div>
+	<div class="logo">
+		<a href="<?php echo site_url(); ?>" class="LogoLink" ></a>
+	</div>
 	<?php
 	$args = array(
 			'menu' => "HeaderMenu",
