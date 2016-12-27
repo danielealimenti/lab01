@@ -37,6 +37,7 @@
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
+                <a href="#" class="btn_more">scopri di più ></a>
             </div>
         <?php
         }
@@ -115,7 +116,7 @@
 
             $randval = mt_rand(0, count($utenti)-1);
 
-            // while per controllo presenza utente
+            // while per controllo se utente gia stampato
             while(in_array($randval,$array)){
                 $randval = mt_rand(0, count($utenti)-1);
             }
@@ -147,11 +148,11 @@
         }
         ?>
         </div>
-    </div>
-    <!--END Wrap Box -->
     <div class="btn_all">
         <!-- manca da aggiungere il link -->
         <a href="#" class="btn">visualizza team</a>
     </div>
+</div>
+<!--END Wrap Box -->
 </div>
 <!-- END Fourth Section -->
