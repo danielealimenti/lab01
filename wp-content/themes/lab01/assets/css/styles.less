@@ -328,6 +328,7 @@ body {
         float: left;
         padding: 0 30px;
         box-sizing: border-box;
+        position:relative;//aggiunto
 
         .nome {
             // text-align: center;
@@ -368,7 +369,9 @@ body {
             // height: 45px;
             // width: 200px;
             padding: 10px 25px;
-            margin: 0 0 20px 0;
+            margin: 0 0 30px 0;//cambiato da 20px a 30px
+            position: absolute;//aggiunto
+            bottom:0; //aggiunto
             text-align: center;
             text-decoration: none;
             border: 2px solid @black;
@@ -399,6 +402,8 @@ body {
         background: @black;
     }
 }
+
+
 
 footer {
     box-sizing: border-box;
@@ -452,6 +457,7 @@ footer {
     float: left;
 }
 
+<<<<<<< HEAD
 /* PAGINA PROFLO */
 .abouthead {
     height: 370px;
@@ -582,4 +588,132 @@ footer {
 .profilo-label{
     margin:10px;
     font-weight: bold;
+=======
+
+/*
+****************
+*    TEAM      *
+*************+**
+*/
+
+#team {
+    width: 1041px;
+    margin: 80px auto;
+
+    .team1{
+        width:240px;
+        height:265px;
+        border: 4px @primary-color solid;
+        margin: 5px;
+        display: inline-block;
+
+        .teamsx {
+            width: 60%;
+            float: left;
+            padding: 25px 10px 0 15px;
+            position: relative;
+            box-sizing: border-box;
+            height: 265px;
+
+            h3 {
+                margin: 0;
+                margin-bottom: 5px;
+                padding: 0;
+                font-size: 26px;
+                font-weight: bold;
+            }
+
+            h4 {
+                margin: 0;
+                margin-bottom: 20px;
+                padding: 0;
+                font-size: 18px;
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            h5 {
+                margin: 0;
+                margin-bottom: 20px;
+                padding: 0;
+                font-size: 16px;
+                font-style: italic;
+                font-weight: 200;
+            }
+
+            p {
+                font-size: 14px;
+                font-style: italic;
+            }
+
+            a {
+                // height: 45px;
+                // width: 200px;
+                padding: 10px 25px;
+                margin: 0 0 20px 0;//cambiato da 20px a 30px
+                text-align: center;
+                text-decoration: none;
+                border: 2px solid @black;
+                color: @black;
+                font-family: 'Raleway', sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                display: inline-block;
+                box-sizing: border-box;
+                transition: all .2s;
+                position: absolute;//aggiunto
+                bottom:0; //aggiunto
+                &::first-letter {
+                    text-transform: uppercase;
+                }
+                &:hover {
+                    box-sizing: border-box;
+                    border: 2px solid @primary-color;
+                    background-color: @primary-color;
+                    transition: all .2s;
+                }
+            }
+        }
+
+        img {
+            float:right;
+            width: 40%;
+            height: 265px;
+        }
+    }
+}
+
+.webdiary {
+   width: 100%;
+   height: 70px;
+   margin-top: 80px;
+   // margin-left: (100%/2)-15px;
+
+   .webdiary2 {
+      display: flex;
+      //text-align: center;
+      width: 35%;
+      margin: 0 auto;
+   }
+
+}
+
+.testo {
+   color: gray;
+   text-align: center;
+}
+
+#img1 {
+   height: 20px;
+   width: 145px;
+   margin-right: 30px;
+   margin-top: 30px;
+}
+
+#img2 {
+   height: 20px;
+   width: 145px;
+   margin-left: 30px;
+   margin-top: 30px;
+>>>>>>> origin/master
 }

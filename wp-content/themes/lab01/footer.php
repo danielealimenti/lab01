@@ -11,12 +11,12 @@
 
 ?>
 
-<!-- <footer>
-	<div class="foot">
-		<p id="lab">lab01 by <a href="<?php get_home_url();?>">med innovations</p>
-		<p id="med">Med Computer s.r.l., via CLuentina, 35/B 62100 Macerata (Loc. Piediripa) Italia</p>
-	</div>
-</footer> -->
+
+<footer>
+    <p class="float--sx">lab01 by <a href="<?php site_url(); ?>" class="link_med">med innovations</p>
+    <p class="float--dx">Med Computer s.r.l., via CLuentina, 35/B 62100 Macerata (Loc. Piediripa) Italia</p>
+</footer>
+
 
 <?php wp_footer(); ?>
 
