@@ -145,7 +145,7 @@
                         echo $tags['value'];
                     ?>
                     </p>
-                    <a href="<?php echo get_edit_user_link($singoloUtente->ID); ?>"> scopri ></a>
+                    <a href="<?php echo get_author_posts_url($singoloUtente->ID); ?>"> scopri ></a>
                 </div>
 
             </div>
