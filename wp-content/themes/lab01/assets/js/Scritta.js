@@ -25,31 +25,25 @@ jQuery( document ).ready(function( $ ) {
 
         switch(mode) {
             case 'write' :
-            message += thing.slice(0, 1);
-            thing = thing.substr(1);
+                message += thing.slice(0, 1);
+                thing = thing.substr(1);
 
-            updateText(message);
+                updateText(message);
 
-            if(thing.length == 0){
-                mode = 'delete';
-                // delay = delay;
-            } else {
-                // delay = delay;
-            }
+                if(thing.length == 0){
+                    mode = 'delete';
+                }
 
             break;
 
             case 'delete' :
-            message = message.slice(0, -1);
-            updateText(message);
+                message = message.slice(0, -1);
+                updateText(message);
 
-            if(message.length == 0)
-            {
-                mode = 'write';
-                // delay = 1000;
-            } else {
-                // delay = 1000;
-            }
+                if(message.length == 0)
+                {
+                    mode = 'write';
+                }
             break;
         }
 
