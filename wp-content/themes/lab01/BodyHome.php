@@ -2,12 +2,10 @@
     <div class="wrap_header">
         <div class="bg1">
             <div class="webdev">
-                <h1>
-                  <span class="fermo">Hello, we are</span><br>
-                  <a href="" class="typewrite" data-period="2000" data-type='[ "Web Developers", "Web Designer", "App Developer" ]'>
-                    <span class="wrap"></span>
-                  </a>
-                </h1>
+                <h1> Hello, we are </h1>
+                <div class="normalText">
+                  <span id="changeText"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -56,7 +54,6 @@
 <div class="wrapper_page">
     <h2 class="title">diario</h2>
         <div class="wrap_box">
-            <div class="box box--activity">
             <?php
                 // WP_Query arguments
                 $args = array(
@@ -71,6 +68,7 @@
                 	while ( $query->have_posts() ) {
                 		$query->the_post();
                         ?>
+                        <div class="box box--activity">
                         <p class="titolo"><?php the_title(); ?></p>
                         <?php the_post_thumbnail(); ?>
                         <?php
@@ -85,13 +83,13 @@
                         ?>
 
                         <a href="<?php echo get_permalink(); ?>" class="btn--more btn_more--black">leggi di più</a>
+                        </div>
                         <?php
                 	}
                 }
                 // Restore original Post Data
                 wp_reset_postdata();
             ?>
-            </div>
         </div><!-- END Riquadri -->
     <div class="btn_all">
         <!-- manca link alla pagina delle attivita -->
@@ -125,7 +123,24 @@
 
             $singoloUtente = $utenti[$randval];
             ?>
+            <!-- <pre> -->
+            <?php
+            // print_r(the_field('immagine_profilo', 'user_'.$singoloUtente->ID));
+
+            // $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
+            // print_r($profilo);
+            // echo $profilo['value']['sizes']['profilo-home'];
+            ?>
+            <!-- </pre> -->
+
             <div class="box box--users">
+                <img src="
+                <?php
+                $profilo = get_field_object("immagine_profilo","user_$singoloUtente->ID");
+                echo $profilo['value']['sizes']['profilo-home'];
+                // print_r(the_field('immagine_profilo', 'user_$singoloUtente->ID'));
+                ?>
+                " alt="">
                 <div class="bio">
                     <p class="nome"><?php echo $singoloUtente->first_name; ?></p>
                     <p class="cognome"><?php echo $singoloUtente->last_name; ?></p>
@@ -142,7 +157,7 @@
                     </p>
                     <a href="<?php echo get_edit_user_link($singoloUtente->ID); ?>"> scopri ></a>
                 </div>
-                <img src="<?php the_field('immagine_profilo', "user_$singoloUtente->ID"); ?>" alt="">
+
             </div>
         <?php
         }

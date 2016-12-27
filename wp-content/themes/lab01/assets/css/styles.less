@@ -156,6 +156,21 @@ body {
     }
 }
 
+//aggiunto per sistemare la scritta
+.webdev{
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    padding: 280px;
+    .normaltext{
+        #changetext{
+
+        }
+    }
+}
+
+
+
 .wrap_header {
     background-size: cover;
     height: 660px;
@@ -163,7 +178,7 @@ body {
     width: 100%;
 
     .bg1 {
-        background: url('../ritagli/background_01.jpg') no-repeat center center;
+        background: url('../../../../uploads/2016/12/background_01.jpg') no-repeat center center;
         background-size: cover;
         height: 600px;
         font-family: @font-family-m;
@@ -323,13 +338,14 @@ body {
     }
 
     .bio {
-        width: 60%;
-        height: 400px;
+        z-index: 2;
+        width: 50%;
+        height: 100%;
         float: left;
         padding: 0 30px;
         box-sizing: border-box;
         position:relative;//aggiunto
-
+        background: #fff;
         .nome {
             // text-align: center;
             font-size: 36px;
@@ -395,10 +411,12 @@ body {
     }
 
     img {
-        width: 40%;
-        height: 400px;
+        z-index: 1;
+        width: 344px;
+        height: 390px;
         margin:0;
-        float:right;
+        position:absolute;
+        float:left;
         background: @black;
     }
 }
