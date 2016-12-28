@@ -26,12 +26,13 @@
         foreach ($termini as $termine) {
             ?>
             <div class="container--tag">
+                <img src="
+                <?php
+                    $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
+                    echo $img["url"];
+                ?>" alt="">
                 <div class="wrap_text--tag">
-                    <img src="
-                    <?php
-                        $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
-                        echo $img["url"];
-                    ?>" alt="">
+
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
