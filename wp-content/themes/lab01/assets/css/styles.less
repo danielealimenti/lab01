@@ -169,15 +169,23 @@ body {
     }
 }
 //aggiunto per sistemare la scritta
-.webdev{
-    width: 250px;
-    height: auto;
-    margin: 0 auto;
-    padding: 280px;
-
+.webdev {
+    //margin: 0 auto;
+    //padding: 280px;
+    text-align: center;
     font-size: 16px;
-    .normaltext{
-        #changetext{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 95px;
+    h1 {
+        font-family: @font-family-m;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0;
+    }
+    .normaltext {
+        #changetext {
             font-size:16px;
         }
     }
