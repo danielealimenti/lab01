@@ -181,7 +181,7 @@ body {
     height: 95px;
     h1 {
         font-family: @font-family-m;
-        font-size: 40px; 
+        font-size: 40px;
         font-weight: bold;
         margin: 0 0 15px 0;
     }
@@ -233,7 +233,7 @@ body {
     width: 100%;
     float: left;
     overflow: hidden;
-    &.diary{
+    &.pippo{
         margin-left: 5%;
     }
     .container--tag {
@@ -373,6 +373,7 @@ body {
         float: left;
         padding: 0 10px;
         box-sizing: border-box;
+        top:-100%;
         position:relative;//aggiunto
         background: #fff;
         .nome {
@@ -439,7 +440,7 @@ body {
         width: 344px;
         height: 390px;
         margin:0;
-        position:absolute;
+        //position:absolute;
         float:left;
         background: @black;
     }
@@ -854,4 +855,130 @@ footer {
             }
         }
     }
+}
+/*
+****************
+*    DIARIO    *
+*************+**
+*/
+.diary {
+    margin-bottom: 60px;
+    height: 70px;
+    padding-top: 60px;
+}
+
+.diarybox {
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
+    display: flex;
+}
+
+.diario {
+    margin: 0;
+    padding-top: 20px;
+
+    h1 {
+        margin: 0;
+        display: block;
+        font-size: 25px;
+        font-family: @font-family-m;
+        text-align: center;
+        color: @grey;
+    }
+}
+
+.wave_box1 {
+    position: relative;
+    display: block;
+    background-size: contain;
+    position: relative;
+    margin-right: 30px;
+    width: 100%;
+    height: 100%;
+    background: url('../ritagli/vector_wave.png') no-repeat center center;
+}
+
+.wave_box2 {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background: url('../ritagli/vector_wave.png') no-repeat center center;
+}
+
+.box-diary {
+    margin: 13px;
+}
+
+.rigacolorata {
+    border-style: solid;
+    margin: 0 auto;
+    width: 90px;
+    border-color: @primary-color;
+}
+
+.left {
+    width: 70%;
+    height: 100%;
+    margin-left: 5%;
+    float: left;
+    margin-bottom: 200px;
+}
+
+.right {
+    width: 210px;
+    height: 100%;
+    float: left;
+    margin-bottom: 80px; //    position: fixed;
+    position: absolute;
+    margin-left: 77%;
+    margin-bottom: 100px;
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: @grey;
+        font-size: 16px;
+        margin: 4px;
+    }
+}
+
+.btn-cerca {
+    background-color: @secondary-color;
+    display: inline-block;
+    transition: all 0.2s;
+    width: 80px;
+    height: 35px;
+    margin: 0.3rem 13rem;
+    border-style: none;
+
+    &:hover {
+        background-color: @primary-color;
+    }
+}
+
+#filter {
+    width: 100%;
+}
+
+.filter1 {
+    margin-top: 15%;
+    margin-bottom: 25%;
+}
+
+.filter2 {}
+
+.author {
+    font-size: 15px;
+}
+
+.box-line {
+    border-style: solid;
+    border-width: 1px;
+    width: 76%;
+    margin: 0 auto;
+    color: #CCD2D4;
 }

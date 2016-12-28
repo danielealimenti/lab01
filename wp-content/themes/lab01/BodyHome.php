@@ -52,7 +52,7 @@
     <div class="blockTitle">
         <h2>diario</h2>
     </div>
-    <div class="wrap_box diary">
+    <div class="wrap_box pippo">
             <?php
                 // WP_Query arguments
                 $args = array(
@@ -102,9 +102,9 @@
 <!-- Fourth Section -->
 <div class="wrapper_page">
     <div class="blockTitle">
-        <h2>Chi siamo</h2>
+        <h2>Chi Siamo</h2>
     </div>
-    <div class="wrap_box diary">
+    <div class="wrap_box pippo">
 
         <?php
 
