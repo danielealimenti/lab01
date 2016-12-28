@@ -45,10 +45,6 @@
         wp_reset_postdata();
         ?>
     </div>
-    <div class="btn_all">
-        <!-- manca il link alla pagina degli user -->
-        <!-- <a href="#" class="btn">About us</a> -->
-    </div>
 </div><!-- END Second Section -->
 
 <!-- Third Section -->
