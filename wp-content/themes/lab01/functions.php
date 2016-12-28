@@ -78,9 +78,10 @@ function lab01_setup() {
 	 */
      //aggiunte dimensioni delle immagini skills
     add_image_size('skill_image_size', 105,120,true );
-    add_image_size('profilo-thumb', 150,150,true );
-    add_image_size('profilo-home', 400,400,true );
-    add_image_size('copertina-thumb', 1920,370,true );
+    add_image_size('profilo-thumb', 150,150);
+    add_image_size('profilo-home', 400,400);
+    add_image_size('profilo-team', 265,265);
+    add_image_size('copertina-thumb', 1920,370);
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.

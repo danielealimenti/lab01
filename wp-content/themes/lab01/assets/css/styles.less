@@ -529,6 +529,7 @@ footer {
             font-weight: lighter;
             clear: both;
             width: 400px;
+            min-height: 45px;
             margin: 0 auto;
             background: url(../img/virgolette/profilo/profile-aperte.png) no-repeat top left, url(../img/virgolette/profilo/profile-chiuse.png) no-repeat bottom right;
             background-size: 90px;
@@ -642,6 +643,8 @@ footer {
         border: 4px @primary-color solid;
         margin: 5px;
         display: inline-block;
+        position: relative;
+        overflow: hidden;
 
         .teamsx {
             width: 60%;
@@ -650,6 +653,8 @@ footer {
             position: relative;
             box-sizing: border-box;
             height: 265px;
+            background-color: #FFF;
+            z-index: 1;
 
             h3 {
                 margin: 0;
@@ -712,9 +717,12 @@ footer {
         }
 
         img {
-            float:right;
-            width: 40%;
+            //float:right;
+            //width: 40%;
+            position: absolute;
             height: 265px;
+            left:5%;
+
         }
     }
 }

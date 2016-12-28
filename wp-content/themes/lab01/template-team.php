@@ -34,7 +34,8 @@
             $profilo = get_field_object("immagine_profilo","user_$utenteSingolo->ID");
             ?>
 
-            <img src="<?php echo $profilo['value']['sizes']['profilo-home']; ?>" alt="Foto Profilo" title="Foto Profilo" />
+            <img src="<?php echo $profilo['value']['sizes']['profilo-team']; ?>" alt="Foto Profilo" title="Foto Profilo" />
+            
         </div>
     <?php }
     ?>
