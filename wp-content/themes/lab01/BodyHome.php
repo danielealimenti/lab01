@@ -159,7 +159,7 @@
         </div>
     <div class="btn_all">
         <!-- manca da aggiungere il link -->
-        <a href="#" class="btn">visualizza team</a>
+        <a href="<?php echo get_page_link(94) ?>" class="btn">visualizza team</a>
     </div>
 </div>
 <!--END Wrap Box -->
