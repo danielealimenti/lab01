@@ -54,7 +54,7 @@
 <!-- Third Section -->
 <div class="wrapper_page">
     <h2 class="title">diario</h2>
-        <div class="wrap_box">
+        <div class="wrap_box diary">
             <?php
                 // WP_Query arguments
                 $args = array(
@@ -106,7 +106,7 @@
     <h2 class="title">
         Chi siamo
     </h2>
-    <div class="wrap_box">
+    <div class="wrap_box diary">
 
         <?php
 
