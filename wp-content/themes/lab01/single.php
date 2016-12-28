@@ -2,12 +2,12 @@
 
     get_header();
 
-    $ActualPost = get_post();
-	print_r($ActualPost);
-
-    $PostAuthor = get_userdata($ActualPost->post_author);
-    echo "stampo l'autore";
-    print_r( $PostAuthor);
+    // $ActualPost = get_post();
+	// print_r($ActualPost);
+    //
+    // $PostAuthor = get_userdata($ActualPost->post_author);
+    // echo "stampo l'autore";
+    // print_r( $PostAuthor);
     // $ruolo = get_field_object('ruolo', "user_".$PostAuthor->ID);
     // echo implode(", ",$ruolo['value']);
 	//  $nomevar = the_author_meta('display_name', $ActualPost->post_author); ?>
@@ -20,13 +20,22 @@
 
 	?></h4>
     <p>
-		<?php echo $ActualPost->post_content; ?>
+		<?php echo $ActualPost->post_content;
+        $ActualPost = get_post();
+    	print_r($ActualPost);
+
+        $PostAuthor = get_userdata($ActualPost->post_author);
+        echo "stampo l'autore";
+        print_r( $PostAuthor); ?>
     </p>
 
 </div>
 <div class="attivitaright">
     <div class="attivitaprofilo">
-        <div class="attivitaimg"> </div>
+        <div class="attivitaimg"> <img src="<?php
+        $profilo = get_field_object('immagine_profilo', "user_".$PostAuthor->ID);
+        echo $profilo['value']['sizes']['profilo-thumb'];
+        ?>" alt="" /></div>
 
         <h2><?php the_author_meta('display_name', $ActualPost->post_author); ?></h2>
         <h3><?php $nomevar; $array = explode(".",the_author_meta('display_name', $ActualPost->post_author));
@@ -50,18 +59,33 @@
     </div>
     <div class="attivitapost">
         <h3>Related</h3>
-        <ul>
-            <li><a href="#">Qui Altre Attivita</a></li>
-            <li><a href="#">Qui Altre Attivita</a></li>
-            <li><a href="#">Qui Altre Attivita</a></li>
-            <li><a href="#">Qui Altre Attivita</a></li>
-            <li><a href="#">Qui Altre Attivita</a></li>
-            <li><a href="#">Qui Altre Attivita</a></li>
-        </ul>
+        <?php
 
+            //for ($x = 0; $x <= 6; $x++) {
+                // WP_Query arguments
+                    $args = array(
+                    	'post_type'    => array( 'attivita' ),
+                    );
+                    $query = new WP_Query( $args );
+                    if ( $query->have_posts() ) {
+                    	while ( $query->have_posts() ) {
+                    		$query->the_post();
+                    		// do something
+                            ?><ul><li><a href="<?php the_permalink(); ?>">
+                            <?php
+                            echo the_title(); ?>
+
+                        </a></li></ul>
+                    	<?php }
+                    }
+                    //echo $query->the_title();
+                    wp_reset_postdata();
+                                //}
+            ?>
     </div>
 
 </div>
+
 <?php
     get_footer();
  ?>
