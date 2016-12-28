@@ -2,8 +2,8 @@
 
     get_header();
 
-    // $ActualPost = get_post();
-	// print_r($ActualPost);
+      $ActualPost = get_post();
+	//  print_r($ActualPost);
     //
     // $PostAuthor = get_userdata($ActualPost->post_author);
     // echo "stampo l'autore";
@@ -17,16 +17,15 @@
 <div class="attivitacontent">
     <h2><?php echo $ActualPost->post_title; ?></h2>
     <h4>Autore:<?php the_author_meta('display_name', $ActualPost->post_author);
-
 	?></h4>
     <p>
 		<?php echo $ActualPost->post_content;
-        $ActualPost = get_post();
-    	print_r($ActualPost);
+        //  $ActualPost = get_post();
+    	//  print_r($ActualPost);
 
-        $PostAuthor = get_userdata($ActualPost->post_author);
-        echo "stampo l'autore";
-        print_r( $PostAuthor); ?>
+         $PostAuthor = get_userdata($ActualPost->post_author);
+        //  echo "stampo l'autore";
+        // print_r( $PostAuthor); ?>
     </p>
 
 </div>
@@ -51,7 +50,6 @@
                 echo $tags -> name;
                 echo " ";
             }
-            //the_field('tags');
 
         ?>
     </h5>
@@ -60,9 +58,6 @@
     <div class="attivitapost">
         <h3>Related</h3>
         <?php
-
-            //for ($x = 0; $x <= 6; $x++) {
-                // WP_Query arguments
                     $args = array(
                     	'post_type'    => array( 'attivita' ),
                     );
@@ -78,7 +73,6 @@
                         </a></li></ul>
                     	<?php }
                     }
-                    //echo $query->the_title();
                     wp_reset_postdata();
                                 //}
             ?>
