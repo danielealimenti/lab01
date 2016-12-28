@@ -1,54 +1,67 @@
+<?php /* Template name: Single Attivity */
+
+    get_header();
+
+    $ActualPost = get_post();
+	print_r($ActualPost);
+
+    $PostAuthor = get_userdata($ActualPost->post_author);
+    echo "stampo l'autore";
+    print_r( $PostAuthor);
+    // $ruolo = get_field_object('ruolo', "user_".$PostAuthor->ID);
+    // echo implode(", ",$ruolo['value']);
+	//  $nomevar = the_author_meta('display_name', $ActualPost->post_author); ?>
+
+	<link rel="stylesheet" href="../assets/css/styles.css" media="screen" title="no title">
+
+<div class="attivitacontent">
+    <h2><?php echo $ActualPost->post_title; ?></h2>
+    <h4>Autore:<?php the_author_meta('display_name', $ActualPost->post_author);
+
+	?></h4>
+    <p>
+		<?php echo $ActualPost->post_content; ?>
+    </p>
+
+</div>
+<div class="attivitaright">
+    <div class="attivitaprofilo">
+        <div class="attivitaimg"> </div>
+
+        <h2><?php the_author_meta('display_name', $ActualPost->post_author); ?></h2>
+        <h3><?php $nomevar; $array = explode(".",the_author_meta('display_name', $ActualPost->post_author));
+		//print_r($array);?></h3>
+        <h4><?php $ruolo = get_field_object('ruolo', "user_".$PostAuthor->ID);
+        echo implode(", ",$ruolo['value']); ?></h4>
+        <h5> <?php
+        $terms = get_terms( array(
+            'taxonomy' => 'tags',
+            'hide_empty' => false,
+        ) );
+            foreach ($terms as $tags) {
+                echo $tags -> name;
+                echo " ";
+            }
+            //the_field('tags');
+
+        ?>
+    </h5>
+
+    </div>
+    <div class="attivitapost">
+        <h3>Related</h3>
+        <ul>
+            <li><a href="#">Qui Altre Attivita</a></li>
+            <li><a href="#">Qui Altre Attivita</a></li>
+            <li><a href="#">Qui Altre Attivita</a></li>
+            <li><a href="#">Qui Altre Attivita</a></li>
+            <li><a href="#">Qui Altre Attivita</a></li>
+            <li><a href="#">Qui Altre Attivita</a></li>
+        </ul>
+
+    </div>
+
+</div>
 <?php
-/**
- * The template for displaying all single posts.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package lab01
- */
-
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-		<?php
-		while ( have_posts() ) : the_post();
-
-			get_template_part( 'template-parts/content', get_post_format() );
-
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-			// Repeater
-			// check if the repeater field has rows of data
-			if( have_rows('contenuto_aggiuntivo') ):
-
-			 	// loop through the rows of data
-			    while ( have_rows('contenuto_aggiuntivo') ) : the_row();
-
-			        // display a sub field value
-			        the_sub_field('titolo');
-					the_sub_field('descrizione');
-					the_sub_field('js_fiddle');
-
-			    endwhile;
-
-			else :
-
-			    // no rows found
-
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+    get_footer();
+ ?>

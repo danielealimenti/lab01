@@ -60,6 +60,9 @@
     padding: 1rem 1rem;
     font-weight: 600;
     transition: all .2s;
+    position:absolute;
+    bottom: 0;
+    left:25%;
     &::first-letter {
         text-transform: uppercase;
     }
@@ -87,8 +90,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-    // font-size: 62.5%;
-    // font-family: 'Montserrat', sans-serif;
     font-family: @font-family-r;
 }
 
@@ -181,7 +182,6 @@ body {
 .wrap_header {
     background-size: cover;
     height: 660px;
-    // tolto padding-bottom: 8rem;
     width: 100%;
 
     .bg1 {
@@ -227,10 +227,10 @@ body {
         text-align: center;
         padding: 0 1.5rem;
         width: (100% / 5);
+        position:relative;
 
         .wrap_text--tag {
             display: inline-block;
-            // height: 180px;
             width: 100%;
 
             h4 {
@@ -262,6 +262,7 @@ body {
     border-color: @secondary-color;
     text-align: center;
     height: 400px;
+    position:relative;
 
     &.first {
         margin: 0 2% 0 4%;
@@ -304,16 +305,14 @@ body {
         text-align: left;
         text-decoration: none;
         float: left;
-        max-width: 100px;
+        max-width: 200px;
         text-overflow: ellipsis;
-
+        word-break: break-word;
     }
 
     a {
-        // height: 45px;
-        // width: 200px;
         padding: 15px 50px;
-        margin: 0 0 20px 0;
+        margin: 0 0 20px -90px;
         text-align: center;
         text-decoration: none;
         border: 2px solid @black;
@@ -321,9 +320,12 @@ body {
         font-family: 'Raleway', sans-serif;
         font-size: 15px;
         font-weight: 600;
-        display: inline-block;
+        // display: inline-block;
         box-sizing: border-box;
         transition: all .2s;
+        position:absolute;
+        left: 50%;
+        bottom:0;
         &::first-letter {
             text-transform: uppercase;
         }
@@ -358,9 +360,7 @@ body {
         position:relative;//aggiunto
         background: #fff;
         .nome {
-            // text-align: center;
             font-size: 36px;
-            // line-height: 22px;
             font-weight: 800;
             margin: 0;
             margin-top: 80px;
@@ -379,7 +379,6 @@ body {
             font-size: 20px;
             font-weight: 300;
             text-transform: capitalize;
-            // text-align: center;
         }
 
         .tag {
@@ -393,8 +392,6 @@ body {
         }
 
         a {
-            // height: 45px;
-            // width: 200px;
             padding: 10px 25px;
             margin: 0 0 30px 0;//cambiato da 20px a 30px
             position: absolute;//aggiunto
@@ -499,7 +496,6 @@ footer {
         border: 4px solid gray;
         height: 150px;
         width: 150px;
-        //text-align: center;
         margin: auto;
         margin-top: 40px;
         img{
@@ -508,16 +504,13 @@ footer {
         }
     }
     h2 {
-        //color: #fff !important;
         text-align: center;
         font-weight: bold;
         font-size: 36px;
-        //font-family: 'Raleway', sans-serif;
     }
     h4 {
         font-size: 20px;
         text-align: center;
-        //color: #fff;
     }
 }
 .aboutcenter {
@@ -572,7 +565,6 @@ footer {
                     height: 25px;
                     display: inline-block;
                     padding: 5px;
-                    //float: left;
                     a{
                         text-indent: -9999px;
                         position: absolute;
@@ -609,7 +601,6 @@ footer {
 
         ul {
             list-style: none;
-            //margin: 10px;
             float: left;
             li {
                 margin: 10px;
@@ -688,8 +679,6 @@ footer {
             }
 
             a {
-                // height: 45px;
-                // width: 200px;
                 padding: 10px 25px;
                 margin: 0 0 20px 0;//cambiato da 20px a 30px
                 text-align: center;
@@ -731,11 +720,9 @@ footer {
    width: 100%;
    height: 70px;
    margin-top: 80px;
-   // margin-left: (100%/2)-15px;
 
    .webdiary2 {
       display: flex;
-      //text-align: center;
       width: 35%;
       margin: 0 auto;
    }
@@ -759,4 +746,79 @@ footer {
    width: 145px;
    margin-left: 30px;
    margin-top: 30px;
+}
+
+
+/*********** PAGINA ATTIVITA ***********/
+
+.attivitacontent {
+
+    width: 70%;
+    hieght:100%;
+    float: left;
+    //padding: 30px;
+    h2 {}
+    h4 {font-weight: 200;font-size: 14px;}
+    p {}
+        * {margin: 25px 50px;}
+
+}
+.attivitaright {
+    position: fixed;
+    right: 2%;
+    //top: 10%;
+    width: 29%;
+    border-left: 2px solid gray;
+    //height: 100%;
+    float: right;
+    .attivitaprofilo {
+        border: 4px solid #900;
+        height: 300px;
+        width: 200px;
+        margin-left: 10px;
+
+        .attivitaimg {
+            width: 150px;
+            height: 150px;
+            margin: 10px auto;
+            border: 3px solid #86b300;
+        }
+        h2 {
+            text-align: center;
+            margin: 5px;
+        }
+        h3{
+            text-align: center;
+            font-weight: bold;
+            margin: 0px;
+            font-style: italic;
+           }
+        h4 {
+            text-align: center;
+            margin: 10px;
+            font-weight:200;
+        }
+        h5 {
+            text-align: center;
+            margin: 10px;
+        }
+    }
+
+    .attivitapost {
+        height: 300px;
+        width: 200px;
+        border: 4px solid #900;
+        margin: 40px 10px;
+    }
+    h3 {margin: 15px;}
+    ul {
+        list-style: none;
+        li {
+            a {
+                text-decoration: none;
+                color: black;
+                line-height: 25px;
+            }
+        }
+    }
 }

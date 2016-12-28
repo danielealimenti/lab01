@@ -26,12 +26,13 @@
         foreach ($termini as $termine) {
             ?>
             <div class="container--tag">
+                <img src="
+                <?php
+                    $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
+                    echo $img["url"];
+                ?>" alt="">
                 <div class="wrap_text--tag">
-                    <img src="
-                    <?php
-                        $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
-                        echo $img["url"];
-                    ?>" alt="">
+
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
@@ -158,7 +159,7 @@
         </div>
     <div class="btn_all">
         <!-- manca da aggiungere il link -->
-        <a href="#" class="btn">visualizza team</a>
+        <a href="<?php echo get_page_link(94) ?>" class="btn">visualizza team</a>
     </div>
 </div>
 <!--END Wrap Box -->
