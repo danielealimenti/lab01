@@ -26,16 +26,17 @@
         foreach ($termini as $termine) {
             ?>
             <div class="container--tag">
+                <img src="
+                <?php
+                    $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
+                    echo $img["url"];
+                ?>" alt="">
                 <div class="wrap_text--tag">
-                    <img src="
-                    <?php
-                        $img = get_field('skillimage', $termine->taxonomy.'_'.$termine->term_id);
-                        echo $img["url"];
-                    ?>" alt="">
+
                     <h4><?php echo $termine->name; // questa chiamata stampa il name di ogni termine ?></h4>
                     <p><?php echo $termine->description; //stampa la descrizione del termine ?></p>
                 </div>
-                <a href="#" class="btn_more">scopri di più ></a>
+                <a href="<?php echo get_term_link($termine, "tipologia"); ?>" class="btn_more">scopri di più ></a>
             </div>
         <?php
         }
@@ -46,7 +47,7 @@
     </div>
     <div class="btn_all">
         <!-- manca il link alla pagina degli user -->
-        <a href="#" class="btn">About us</a>
+        <!-- <a href="#" class="btn">About us</a> -->
     </div>
 </div><!-- END Second Section -->
 
@@ -60,13 +61,16 @@
                        'post_type'  => array( 'attivita' ),
                 );
 
+                $index = 0; //indice che conta fino a 3 per uscire dal ciclo while
+
                 // The Query
                 $query = new WP_Query( $args );
 
                 // The Loop
                 if ( $query->have_posts() ) {
-                	while ( $query->have_posts() ) {
+                	while ( $query->have_posts() && $index < 3) {
                 		$query->the_post();
+                        $index ++;
                         ?>
                         <div class="box box--activity">
                         <p class="titolo"><?php the_title(); ?></p>

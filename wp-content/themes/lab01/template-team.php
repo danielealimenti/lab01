@@ -30,7 +30,11 @@
                 ?></p>
                 <a href="#">scopri ></a>
             </div>
-            <img src="<?php the_field('immagine_profilo', 'user_'.$utenteSingolo->ID ); ?>" alt="Foto Profilo" title="Foto Profilo" />
+            <?php
+            $profilo = get_field_object("immagine_profilo","user_$utenteSingolo->ID");
+            ?>
+
+            <img src="<?php echo $profilo['value']['sizes']['profilo-home']; ?>" alt="Foto Profilo" title="Foto Profilo" />
         </div>
     <?php }
     ?>

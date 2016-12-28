@@ -9,7 +9,7 @@
 
 get_header();
 
-if ( get_the_author_meta( 'description' ) ) :
+if ( get_the_author_meta( 'ID' ) ) :
 
     //id dell'autore
     $user_id = get_the_author_meta( 'ID' );
