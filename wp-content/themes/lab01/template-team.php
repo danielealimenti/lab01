@@ -1,7 +1,7 @@
 <?php /* Template name: Team */ ?>
 <?php get_header(); ?>
 
-<div class="webdiary">
+<div class="blockTitle">
     <h2><?php the_title() ?></h2>
 </div>
 
